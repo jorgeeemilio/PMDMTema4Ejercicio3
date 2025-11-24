@@ -3,6 +3,7 @@ package es.studium.ejercicio3tema4;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements OnInterface, View
 
     DialogoNombre dialogoNombre;
     Button btnComenzar;
+    TextView txtNombre, txtZodiaco, txtChino, txtEquipo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,11 @@ public class MainActivity extends AppCompatActivity implements OnInterface, View
 
         btnComenzar = findViewById(R.id.btnComenzar);
         btnComenzar.setOnClickListener(this);
+
+        txtNombre = findViewById(R.id.txtNombre);
+        txtZodiaco = findViewById(R.id.txtZodiaco);
+        txtChino = findViewById(R.id.txtChino);
+        txtEquipo = findViewById(R.id.txtEquipo);
     }
 
     @Override
@@ -40,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements OnInterface, View
 
     @Override
     public void onNombreyApellidos(String nombre) {
-        Toast.makeText(this, nombre, Toast.LENGTH_SHORT).show();
+       txtNombre.setText(nombre);
     }
 
     @Override
