@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Ejercicio3Tema4</string>
+    <string name="tituloActivity">Información Personal</string>
+    <string name="tituloDialogoNombre">Nombre y Apellidos</string>
+    <string name="tituloDialogoFechaNacimiento">Fecha de Nacimiento (DD/MM/AAAA)</string>
+    <string name="tituloDialogoCiudadNacimiento">Ciudad de Nacimiento</string>
+    <string name="btnCancelar">Cancelar</string>
+    <string name="btnSiguiente">Siguiente</string>
+    <string name="btnComenzar">Comenzar</string>
+    <string name="errorNombre">Por favor, introduzca su nombre y sus apellidos</string>
+    <string name="errorFechaNacimiento">Por favor, introduzca su fecha de nacimiento</string>
+    <string name="errorFechaNacimientoInvalida">Por favor, introduzca una fecha de nacimiento válida</string>
+    <string name="errorCiudadNacimiento">Por favor, introduzca su ciudad de nacimiento</string>
+    <string name="infoNombre">Nombre y Apellidos: </string>
+    <string name="infoZodiaco">Signo Zodiacal: </string>
+    <string name="infoHoroscopoChino">Horóscopo Chino: </string>
+    <string name="infoEquipoFutbol">Equipo de Fútbol: </string>
+</resources>
