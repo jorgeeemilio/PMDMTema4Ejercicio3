@@ -13,6 +13,7 @@ import androidx.fragment.app.DialogFragment;
 
 public class DialogoNombre extends DialogFragment {
 
+    DialogoFechaNacimiento dialogoFechaNacimiento;
     OnInterface onInterface;
     EditText nombreyApellidos;
 
@@ -29,7 +30,9 @@ public class DialogoNombre extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         onInterface.onNombreyApellidos(nombreyApellidos.getText().toString());
-                        // Mostrar el siguiente Diálogo
+                        dialogoFechaNacimiento = new DialogoFechaNacimiento();
+                        dialogoFechaNacimiento.setCancelable(false);
+                        dialogoFechaNacimiento.show(getActivity().getSupportFragmentManager(), "");
                         dialog.dismiss();
                     }
                 });
