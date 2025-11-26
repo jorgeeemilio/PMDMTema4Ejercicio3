@@ -31,6 +31,12 @@ public class DialogoCiudad extends DialogFragment {
                         onInterface.onCiudadNacimiento(ciudad.getText().toString());
                         dialog.dismiss();
                     }
+                })
+                .setNegativeButton(R.string.btnCancelar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
                 });
         return builder.create();
     }

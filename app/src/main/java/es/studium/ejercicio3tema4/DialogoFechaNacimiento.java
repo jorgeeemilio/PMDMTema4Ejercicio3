@@ -35,6 +35,12 @@ public class DialogoFechaNacimiento extends DialogFragment {
                         dialogoCiudad.show(getActivity().getSupportFragmentManager(), "");
                         dialog.dismiss();
                     }
+                })
+                .setNegativeButton(R.string.btnCancelar, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
                 });
         return builder.create();
     }
