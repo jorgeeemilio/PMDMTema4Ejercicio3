@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -26,23 +27,34 @@ public class DialogoNombre extends DialogFragment {
         nombreyApellidos = myView.findViewById(R.id.editTextText);
         builder.setView(myView)
             .setTitle(R.string.tituloDialogoNombre)
-                .setPositiveButton(R.string.btnSiguiente, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        onInterface.onNombreyApellidos(nombreyApellidos.getText().toString());
-                        dialogoFechaNacimiento = new DialogoFechaNacimiento();
-                        dialogoFechaNacimiento.setCancelable(false);
-                        dialogoFechaNacimiento.show(getActivity().getSupportFragmentManager(), "");
-                        dialog.dismiss();
-                    }
-                })
+                .setPositiveButton(R.string.btnSiguiente, null) // Cambiar comportamiento por defecto
                 .setNegativeButton(R.string.btnCancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 });
-        return builder.create();
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                if (nombreyApellidos.getText().toString().isEmpty())
+                {
+                    nombreyApellidos.setError(getString(R.string.errorNombre));
+                    nombreyApellidos.requestFocus();
+                }
+                else
+                {
+                    onInterface.onNombreyApellidos(nombreyApellidos.getText().toString());
+                    dialogoFechaNacimiento = new DialogoFechaNacimiento();
+                    dialogoFechaNacimiento.setCancelable(false);
+                    dialogoFechaNacimiento.show(getActivity().getSupportFragmentManager(), "");
+                }
+            }
+        });
+        return dialog;
     }
 
     @Override

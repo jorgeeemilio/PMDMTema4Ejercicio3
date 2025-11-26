@@ -26,23 +26,38 @@ public class DialogoFechaNacimiento extends DialogFragment {
         fechaNacimiento = myView.findViewById(R.id.editTextFecha);
         builder.setView(myView)
                 .setTitle(R.string.tituloDialogoFechaNacimiento)
-                .setPositiveButton(R.string.btnSiguiente, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        onInterface.onFechaNacimiento(fechaNacimiento.getText().toString());
-                        dialogoCiudad = new DialogoCiudad();
-                        dialogoCiudad.setCancelable(false);
-                        dialogoCiudad.show(getActivity().getSupportFragmentManager(), "");
-                        dialog.dismiss();
-                    }
-                })
+                .setPositiveButton(R.string.btnSiguiente, null) // Cambiar comportamiento por defecto)
                 .setNegativeButton(R.string.btnCancelar, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 });
-        return builder.create();
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String fecha = fechaNacimiento.getText().toString();
+                if (fecha.isEmpty()) {
+                    fechaNacimiento.setError(getString(R.string.errorFechaNacimiento));
+                    fechaNacimiento.requestFocus();
+                }
+                else 
+                {
+                    if (validarFecha(fecha)) {
+                        onInterface.onFechaNacimiento(fechaNacimiento.getText().toString());
+                        dialogoCiudad = new DialogoCiudad();
+                        dialogoCiudad.setCancelable(false);
+                        dialogoCiudad.show(getActivity().getSupportFragmentManager(), "");
+                    } else {
+                        fechaNacimiento.setError(getString(R.string.errorFechaNacimientoInvalida));
+                        fechaNacimiento.requestFocus();
+                    }
+                }
+            }
+        });
+        return dialog;
     }
 
     @Override
