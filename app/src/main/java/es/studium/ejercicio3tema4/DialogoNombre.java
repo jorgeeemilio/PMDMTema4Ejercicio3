@@ -51,6 +51,7 @@ public class DialogoNombre extends DialogFragment {
                     dialogoFechaNacimiento = new DialogoFechaNacimiento();
                     dialogoFechaNacimiento.setCancelable(false);
                     dialogoFechaNacimiento.show(getActivity().getSupportFragmentManager(), "");
+                    dialog.dismiss();
                 }
             }
         });

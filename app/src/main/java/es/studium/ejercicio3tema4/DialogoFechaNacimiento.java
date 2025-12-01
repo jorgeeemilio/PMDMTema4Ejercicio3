@@ -11,6 +11,9 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 public class DialogoFechaNacimiento extends DialogFragment {
 
     DialogoCiudad dialogoCiudad;
@@ -43,13 +46,14 @@ public class DialogoFechaNacimiento extends DialogFragment {
                     fechaNacimiento.setError(getString(R.string.errorFechaNacimiento));
                     fechaNacimiento.requestFocus();
                 }
-                else 
+                else
                 {
                     if (validarFecha(fecha)) {
                         onInterface.onFechaNacimiento(fechaNacimiento.getText().toString());
                         dialogoCiudad = new DialogoCiudad();
                         dialogoCiudad.setCancelable(false);
                         dialogoCiudad.show(getActivity().getSupportFragmentManager(), "");
+                        dialog.dismiss();
                     } else {
                         fechaNacimiento.setError(getString(R.string.errorFechaNacimientoInvalida));
                         fechaNacimiento.requestFocus();
@@ -58,6 +62,18 @@ public class DialogoFechaNacimiento extends DialogFragment {
             }
         });
         return dialog;
+    }
+
+    private boolean validarFecha(String fecha) {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", new Locale("ES-es"));
+        format.setLenient(false);
+        try
+        {
+            format.parse(fecha);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
