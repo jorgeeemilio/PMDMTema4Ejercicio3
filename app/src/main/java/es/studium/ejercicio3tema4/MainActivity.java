@@ -60,29 +60,29 @@ public class MainActivity extends AppCompatActivity implements OnInterface, View
 
     // Calcular signo zodiacal
     String zodiaco = "";
-    if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+    if ((month == 3 && day >= 21) || (month == 4 && day < 20)) {
         zodiaco = "Aries";
-    } else if ((month == 4 && day > 20) || (month == 5 && day < 20)) {
+    } else if ((month == 4 && day >= 20) || (month == 5 && day < 21)) {
         zodiaco = "Tauro";
-    } else if ((month == 5 && day >= 21) || (month == 6 && day < 20)) {
+    } else if ((month == 5 && day >= 21) || (month == 6 && day < 21)) {
         zodiaco = "Géminis";
-    } else if ((month == 6 && day >= 21) || (month == 7 && day < 22)) {
+    } else if ((month == 6 && day >= 21) || (month == 7 && day < 23)) {
         zodiaco = "Cáncer";
-    } else if ((month == 7 && day >= 23) || (month == 8 && day < 22)) {
+    } else if ((month == 7 && day >= 23) || (month == 8 && day < 23)) {
         zodiaco = "Leo";
-    } else if ((month == 8 && day >= 23) || (month == 9 && day < 22)) {
+    } else if ((month == 8 && day >= 23) || (month == 9 && day < 23)) {
         zodiaco = "Virgo";
-    } else if ((month == 9 && day >= 23) || (month == 10 && day < 22)) {
+    } else if ((month == 9 && day >= 23) || (month == 10 && day < 23)) {
         zodiaco = "Libra";
-    } else if ((month == 10 && day >= 23) || (month == 11 && day < 21)) {
+    } else if ((month == 10 && day >= 23) || (month == 11 && day < 22)) {
         zodiaco = "Escorpio";
-    } else if ((month == 11 && day >= 22) || (month == 12 && day < 21)) {
+    } else if ((month == 11 && day >= 22) || (month == 12 && day < 22)) {
         zodiaco = "Sagitario";
-    } else if ((month == 12 && day >= 22) || (month == 1 && day < 19)) {
+    } else if ((month == 12 && day >= 22) || (month == 1 && day < 20)) {
         zodiaco = "Capricornio";
-    } else if ((month == 1 && day >= 20) || (month == 2 && day < 18)) {
+    } else if ((month == 1 && day >= 20) || (month == 2 && day < 19)) {
         zodiaco = "Acuario";
-    } else if ((month == 2 && day >= 19) || (month == 3 && day < 20)) {
+    } else if ((month == 2 && day >= 19) || (month == 3 && day < 21)) {
         zodiaco = "Piscis";
     }
     txtZodiaco.setText(zodiaco);
